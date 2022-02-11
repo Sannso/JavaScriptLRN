@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Nuevos datos</h1>
+    <script>
+
+        // Symbol() suelen ser caracteristicas de objetos y se mantienen privados
+        // permiten crear identificadores unidos
+
+        let id = "hola"
+        let id2 = "hola"
+        console.log(id === id2) // Si son iguales
+
+        id = Symbol("id: hola")
+        id2 = Symbol("id: hola")
+        console.log(id, id2, id === id2)
+        console.log(id == id2) // Falso en ambas ocaciones
+
+        // Entonces, los symbols dentro de un objeto no se ven como propiedades
+        // es decir que si se recorren con un for in o algo, no van a aparecer 
+        // los symbols
+
+        const NAME = Symbol("nombre") // "" es una descripcion
+
+        const persona = {
+            [NAME]: "Santiago"
+        }
+
+        console.log(persona)
+
+        // Por lo tanto tampoco se puede modificar
+        persona.NAME = "Jonathan"
+        console.log(persona)
+        console.log(persona[NAME]) // asi la podemos llamar
+
+        // Como obtener los symbolos de un objeto
+        console.log(Object.getOwnPropertySymbols(persona))
+
+        ////////////////////////////////////////////////////////////////////////
+
+        // SET - Son arrays "mejorados" que solo tienen objetos unicos
+        let arr = [1,2,3,3,true,true,false,{}, {}, "hola", "hola", "Hola"]
+
+        let set = new Set(arr)
+        console.log("array de prueba: ", arr)
+        console.log("variable set, con el array: ", set)
+
+        // Agrego un nuevo valor
+        set.add("ultimogg")
+        console.log(set)
+
+        // .delete  Elimina
+        // .clear   Limpia todo el objeto
+
+        ///////////////////////////////////////////////////////////////////////////
+
+
+        // Maps
+        // Parace un diccionario
+        const mapa = new Map()
+
+        mapa.set("nombre","Santiago")
+        mapa.set("apellido", "Sosa")
+        mapa.set("edad", "21")
+        console.log(mapa) // mapa.size, mapa.has('llave')
+                            // mapa.get('nombre'), mapa.set('nombre', 'otro')
+                            // mapa.delete
+        console.log(mapa.keys())
+
+
+
+        //////////////////////////////////////////////////////////////////////
+        // WeakSets and WeakMaps
+         
+        // No son iterable; No se puede usar metodo clear
+        // No se pueden delclarar varias variables en el constructor
+
+        const ws = new WeakSet()
+
+        let valor1 = {"valor1": 1}
+        let valor2 = {"valor2": "dos"}
+
+        ws.add(valor1)
+        ws.add(valor2)
+        console.log("WeakSet: ", ws)
+
+        let SI = false
+
+        if(SI){
+            setInterval(()=>{
+                console.log("a")
+            }, 1000)
+        }
+        // No sirve pero el chiste es que cuando la variable en la logica
+        // se vuelve nula o se deja de usar el waekset lo elimina
+
+
+        // Lo mismo con waekmap
+
+        const wm = new WeakMap()
+
+        let llave1 = {}
+        let llave2 = {}
+        let llave3 = {}
+
+        wm.set(llave1, "uno")
+        wm.set(llave2, 2)
+        wm.set(llave3, true)
+
+        console.log(wm)
+        
+        //
+        console.log("//////////////////////////////////////////////////")
+        ///////////////////////////////////////////////////////////////////////
+
+        // Iterables y iteradores
+
+        const iterable = [1,2,3,4,5]
+        const iterador = iterable[Symbol.iterator]()
+
+        console.log(iterable)
+        console.log(iterador)
+
+        console.log(iterador.next())
+        console.log(iterador.next())
+
+
+        //////////////////////////////////////////////////////////////////////////
+        console.log("Generadores")
+
+
+        // yield es como un return
+        function* generador(){
+            yield "hola"
+            console.log("a")
+            yield "hola 2"
+            console.log("ajaajaj")
+            yield "hola 3"
+            yield "hola 4"
+        }
+
+        const iteradorGen = generador()
+        /*console.log("primer cosole",iteradorGen.next())
+        console.log("segundo cosole",iteradorGen.next())
+        console.log("tercer cosole",iteradorGen.next())
+        console.log("cuarto cosole",iteradorGen.next())
+        console.log("last cosole",iteradorGen.next())
+*/
+        // next lo hace automatico con un for (como si estuviera asi implementado)
+        console.log("-------- Repeticion con for")
+        // Y solo lo itera si el generador tiene más cosas para generar,
+        // si no, no hacer nada
+        for(let y of iteradorGen){
+            console.log(y)
+        }
+
+        // Se puede con el spread operator, ya que funciona como un iterador
+
+        const listainteracion = [...generador()]
+        console.log(listainteracion)
+
+
+        // ------------------------------------------------------------
+
+        // Proxis
+        // Se validan en el manajador si lka propiedad modificada se
+        // pueda modificar segun decidamos, o una nueva, o cualquier modificacion a un
+        // objeto
+        const personaO ={
+            nombre: "",
+            apellido: "",
+            edad: 0
+        }
+
+        // itera cada atributo del objeto
+        const manejador = {
+            set(obj, prop, valor){
+                if(Object.keys(obj).indexOf(prop) === -1){
+                    console.error(`La propiedad "${prop}" no existe`)
+                }
+                else obj[prop] = valor
+            }
+        }
+
+        const jon = new Proxy(personaO, manejador)
+        jon.nombre ="Jon"
+        jon.edad = 35
+        jon.twitter = "@jonmircha" 
+        console.log(jon)
+
+
+        ////////////////////////////////////////////////////
+
+        // propiedades dinamicas de los objetos
+        // basicamente genera los nombres de las propiedades de los objetos
+        //      DINAMICAMENTE
+
+        const objUsuarios = {}
+        console.log("Usuarios: ", objUsuarios)
+        const usuarios = ["jon", "kenai", "batman", "sebastian"]
+
+        usuarios.forEach((ele, index) => {
+            objUsuarios[`id_${index}`] = ele
+        });
+
+        console.log("Usuarios hecho: ", objUsuarios)
+
+
+        /////////////////////////////////////////////////////
+        console.log("////////////////// THIS /////////////////////")
+        // THIS
+        // Hace referencia al objeto en el que estamos, pero en JS es diferente
+        // this hace referencia al objeto global Window
+        // (en nodeJS devolveria global)
+
+        console.log(window)
+        console.log(this === window)
+
+        this.nombre= "contexto window"
+        function imprimir(){
+            console.log(this.nombre)
+        }
+
+
+        const obj = {
+            nombre: "contexto objeto",
+            imprimir: function(){
+                console.log(this.nombre)
+            }
+        }
+
+        obj.imprimir()
+
+
+        const obj2 = {
+            nombre: "contexto de obj2",
+            imprimir // se le asigna como valor la funcion creada y es por es que...
+        }
+
+        obj2.imprimir() // imprime el nombre de el objeto y no de windows
+                            // como seria logico    
+
+        // si se utiliza una arrow function el this va a llamar al padre del objeto
+        // y el padre de este objeto es window (no genera scope como la anonimas)
+
+        function Persona(nombre){ // funcion constructora
+            this.nombre = nombre
+            return console.log(this.nombre)
+        }
+
+        let aaa = new Persona("Jon")
+
+        // SI en la funcion se devuelve una funcion esta no va a entender el this
+        // porque en su contexto no se ha definido ninguno, por lo tanto
+        // se va a devolver y va a escoger el this de window
+
+        // una arrow function si leeria el this creado en la funcion constructora
+
+
+        /////////////////////////////////////////////////////////////////////
+        // CALL APPLY BIND
+
+        // call y apply pueden asignar por asi decirlo un contexto al this
+
+        function saludarCAB(nombreP){
+            console.log(`Saludo ${nombreP} desde ${this.nombre}`)
+        }
+
+        const objCAB ={
+            nombre: "Contexto objeto"
+        }
+
+        saludarCAB("sinNada")
+        saludarCAB.call(objCAB, "conCall")
+        saludarCAB.apply(objCAB, ["conApply"]) // la diferencia es como reciben
+                                            // los parametros
+
+        // bind enlaza el contexto del que se le indique
+
+        const personita ={
+            nombre: "Sans",
+            saludar: function(){
+                return console.log(`saludos ${this.nombre}`)
+            }
+        }
+
+        console.log("verificacion contexto de personita1:")
+        personita.saludar()
+
+
+        const otrapersona = {
+            saludar: personita.saludar.bind(personita)
+                                    // como este objeto no tiene propiedad nombre
+                                    // y es funcion anonima devuelve undefined
+                                    // por lo tanto habria que asignarle el
+                                    // contexto de el otro objeto 
+        }
+
+        console.log("verificacion contexto de personita2")
+        otrapersona.saludar()
+
+
+    </script>
+
+</body>
+</html>

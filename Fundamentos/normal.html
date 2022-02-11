@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fundamentos parte 2</h1>
+
+    <script>
+
+        // ------- Funciones ------------
+        function primeraF(){
+            console.log("Aquí se esta ejecutando una función...")
+        }
+
+        primeraF()
+
+        // Retorno
+        function returnValue(){
+            console.log("wtf")
+            return "Valor retornado"
+        }
+
+        console.log(returnValue())
+
+        // Parametros
+        function suma(a=0, b=0){
+            return a + b
+        }
+            // Tambien tiene parametros por defecto como en python
+        console.log(suma(2,3))
+        console.log(suma())
+
+        // Las funciones declaradas y variables var las ordena en primer lugar y por eso se puede
+        //  invocar una funcion "antes de declararla"
+
+        // Funciones Expresadas
+        //     funcion anonima
+        const funcionExpresada = function(){
+            console.log("Ejecucion por funcion expresada de una varible")
+            return 32
+        }
+
+        console.log(funcionExpresada())
+        console.log(`Tipo de la variable: ${typeof funcionExpresada}`)
+
+
+        // ------- Arreglo ------------
+
+        // Se pueden definir con let o const
+        
+        const arreglo = ["Santiago", "David", 2, true]
+        console.log(arreglo)
+        console.log(arreglo[3])
+
+        const aAuto = Array(10).fill(false)
+        console.log(aAuto)
+
+        aAuto.push(true)
+        aAuto.push("Ultimo")
+        console.log(aAuto)
+        // pop() como es usual elimina el último
+
+        const colores = ["rojo", "verde", "azul"]
+        colores.forEach(function(e, index){
+            console.log(`<li id=${index}>${e}</li>`)
+        })
+
+
+        // -------------- Objetos ---------------
+
+        const objeto = {}
+        console.log(objeto)
+
+        const yo = {nombre: "Santiago", 
+                    apellido: "Sosa",
+                    edad: 20,
+                    saludar: function(){
+                                return `Hola mi nombre es ${this.nombre}`
+                            }
+                    }
+
+
+        // Dentro tiene cualquier cosa, incluso una función
+
+        console.log(yo.saludar())
+        console.log(Object.keys(yo))
+        console.log(Object.values(yo))
+        console.log(yo.hasOwnProperty("edad"))
+
+
+        // -------------- Condicionales ---------------
+                    //if - else if - else
+        if(true){
+            console.log("Se ejecuta verdadero")
+        }
+        else{
+            console.log("Se ejecuta falso")
+        }
+
+        // Operador ternario
+        let solucion = (true) ? "Es verdadero" : "Es falso"
+        console.log(solucion)
+
+        // switch case
+        let valor = 2
+        let sol
+
+        switch (valor) {
+            case 1:
+                sol = "El valor es uno"
+                break;
+            
+            case 2:
+                sol = "El valor es dos"
+                break;
+            
+            default:
+                sol = "No se que valor es"
+                break;
+        }
+
+        console.log(sol)
+
+    </script>
+
+</body>
+</html>

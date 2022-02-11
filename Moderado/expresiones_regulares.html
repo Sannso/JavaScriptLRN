@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Expresiones regulares</h1>
+
+    <script>
+        let cadena = "Prueba de texo, esta prueba es para ver como funcionan las expresiones, prueba"
+
+        // Forma 1
+        let expReg = new RegExp("prueba", "ig") // i es para ignorar mayus y minus,
+                                                // g es para que no se detenga en la primera 
+
+        console.log(expReg.test(cadena))
+        console.log(expReg.exec(cadena))
+
+
+        // Forma 2
+        let expReg2 = /prueba/ig
+        console.log(expReg2.test(cadena))
+        console.log(expReg2.exec(cadena))
+
+        // Expresion regular para validar nombres EJ
+        // ^ -> circunflejo, es el operador que dice que no puede haber nada antes de la siguiente expresion
+        // $ -> no puede haber nada despues
+        // [] -> agrupadores
+        // + -> evalua por cada cadena de texto
+        // \s -> acepta espacios en blanco
+
+        let nombre = 'Santiago'
+        let expR = /^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$/g.test(nombre)
+
+        // Expresion regular para un email
+        let expREmail = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i
+
+    </script>
+</body>
+</html>

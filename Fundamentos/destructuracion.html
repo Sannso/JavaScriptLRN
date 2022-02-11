@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Destructuración</h1>
+
+    <script>
+        
+        const numeros = [1, 2, 3]
+        const  [uno, dos, tres] = numeros
+
+        console.log(uno)
+        console.log(dos)
+
+
+        // La destructuracion en objetos, basicamente crea variables que deben llevar
+        //  el mismo nombre que el atributo en el objeto
+
+        let persona = { nombre: "David",
+                        apellido:  "Velez",
+                        edad:  20}
+
+        let {edad, apellido, nombre} = persona
+        console.log(nombre)
+        console.log(edad)
+
+    </script>
+
+</body>
+</html>

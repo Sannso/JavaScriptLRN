@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fundamentos parte 3</h1>
+
+    <script>
+
+        // While - Do While
+        let contador = 0
+
+        while (contador < 10) {
+            console.log(contador)
+            contador++
+        }
+
+        do {
+            console.log(contador)
+            --contador
+        } while (contador > 0);
+
+
+        // For
+        console.log("-----------  For ----------------")
+        for (let index = 0; index < 10; index++) {
+            console.log(index);
+        }
+
+        let arreglo = [1, 2,"tres", 4, 5]
+
+        console.log("-----------  For in ----------------")
+        // Permite recorrer las propiedades de un objeto
+
+        const yo = {nombre: "Santiago",
+                    edad: 20}
+
+        for (const key in yo) {
+            console.log(`Propiedad de yo: ${key} - Valor: ${yo[key]}`)
+        }
+
+
+        console.log("-----------  For of ----------------")
+        // Permite recorrer propiedades de un objeto
+
+        for (const e of arreglo) {
+            console.log(e)
+        }
+
+
+    </script>
+
+</body>
+</html>
