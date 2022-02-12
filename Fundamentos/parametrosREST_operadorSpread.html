@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>parametros REST y operador Spread</h1>
+
+    <script>
+        // Parametro REST
+        
+        // Basicamente es para poder recibir n parametros, estos parametros "de más" 
+        //      se guardan en una arreglo en este caso "c"
+        function sumar(a, b, ...c){
+            let resultado = a + b
+            
+            console.log(c)
+
+            c.forEach(function(n){
+                resultado += n
+                console.log("n es: " + n)
+            })
+
+            return resultado
+        }
+
+        console.log(sumar(1,2,3,4,5,6))
+
+        // operados Spread
+
+        const arr1 = ["a", "b", "c"],
+            arr2 = [1, 2, 3]
+            
+        const arr3 = [...arr1, ...arr2] 
+
+        console.log(arr3)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        Procesamiento Single thread y Multi theread
+         - JS solo trabaja en un solo hilo
+
+        Operaciones de CPU y Operaciones de Inp / Outp
+         - JS suele utilizar operaciones de entrada/salida (web)
+
+        Operacions concurrentes y paralelas
+        - cuncurrencia, dos o más se ejecutan a la vez pero no al mismo tiempo
+        - paralelismo, ocurren al mismo tiempo
+
+        Operaciones bloqueantes y no bloqueantes
+        - bloqueante se refiere a la fase de espera cada que se ejecuta
+            una operacion del codigo (no devuelve el control hasta
+            que ha terminado todas las tareas)
+        
+        - no bloqueantes, cuando comienza una operacion no bloquea el control
+
+        Operaciones sincronas y asincronas
+        - se refiere a cuando tendra la respuesta
+        sincrono, obtiene la respuesta de inmediato
+        asincrono, no necesita la respuesta al momento y devuelve el control
+
+        */
+
+        /*Codigo Sincrono Bloqueante */
+        (() =>{
+            console.log("Codigo Síncrono")
+            console.log("inicio")
+
+            function dos(){
+                console.log("Dos")
+            }
+
+            function uno(){
+                console.log("Uno")
+                dos()
+                console.log("tres")
+            }
+
+            uno()
+            console.log("Fin")
+
+        })();
+
+
+        /*Codigo Asiíncrono No Bloqueante*/
+        (() => {
+            console.log("Codigo Asíncrono")
+            console.log("inicio")
+
+            function dos(){
+                setTimeout(function(){
+                    console.log("Dos")
+                }, 1000)
+            }
+
+            function uno(){
+                setTimeout(function(){
+                    console.log("Uno")
+                }, 0)
+                dos()
+                console.log("Tres")
+            }
+
+            uno()
+            console.log("Fin")
+
+        })();
+    </script>
+</body>
+</html>

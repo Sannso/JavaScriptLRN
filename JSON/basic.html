@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        ////////////////////////////////////////////////
+
+        const json = {  // un objeto con ejemplo de los tipos de datos que
+                            // aceptaria un formato json
+            cadena: "Jon",
+            numero: 35,
+            boolean0: true,
+            arreglo: [1,2,"perro",4],
+            objeto: {twitter: "@xd"},
+            nulo: null
+        }
+
+
+
+        // Json tiene dos funciones
+        console.log(JSON) // vemos la info del objeto
+
+        // JSON.parse() transforma una cadena de texto en algo que interprete
+        // el lenguaje. EJ. si se ponen unas llaves cuando se impriman
+                // deovlvera un objeto y no una cadena de texto con unas llaves
+
+        console.log("parse:", JSON.parse("{}"))
+
+        // stringify hace todo lo contrario
+        console.log("stringify:", JSON.stringify({}))
+        // basicamente pasa un objeto a JSON
+        console.log("objeto a JSON:", JSON.stringify(json))
+    </script>
+</body>
+</html>

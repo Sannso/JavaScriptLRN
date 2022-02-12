@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Clases</h1>
+
+    <script>
+
+        // --------- Clases --------------
+
+        class Animal{
+            constructor (nombre, genero){
+                this.nombre = nombre
+                this.genero = genero
+            }
+
+            hacerRuido(){
+                console.log(`Hola mi nombre es ${this.nombre} y estoy vivo`)
+            }
+        }
+
+
+        const sbj = new Animal("ax", "Macho")
+        sbj.hacerRuido()
+        sbj.nombre = "kekw"
+        sbj.hacerRuido()
+
+
+        // --------- Herencia --------------
+
+        class Perro extends Animal{
+            constructor(nombre, genero, tamanio){
+                super(nombre, genero) // Como es usual el metodo super
+                                        // llama al constructor de la clase padre
+                this.tamanio = tamanio
+            }
+
+            ladrar(){
+                console.log("Guauu Guauu")
+            }
+
+            // Metodo estatico
+            static queSoy(){
+                console.log("Los perros somos animales mamiferos.")
+            }
+
+            // Tambien hay getters  y setters pero no le veo el sentido si las 
+            //      "Clases" no pueden tener privacidades (public, private...) y asi los metodos
+            //      y atributos.
+            // Estos se trabajan (cuando se llaman) como variables no como metodos
+            get getNombre(){
+                return this.nombre
+            }
+
+            set setNombre(nombre){
+                this.nombre = nombre
+            }
+        }
+
+        sbj2 = new Perro("chiki", "macho", "mediano")
+        sbj2.ladrar()
+        Perro.queSoy()
+
+        
+
+    </script>
+</body>
+</html>

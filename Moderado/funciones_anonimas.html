@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Funciones anonimas autoejecutables</h1>
+
+    <script>
+
+        // Funcion anonima autoejecutable "clasica"
+
+        (function(w, d, c){ //recibir parametros de esta forma pueden servir como alias 
+            console.log("Esto es una funcion anonima autoejecutable")
+            console.log(w)
+            console.log(d)
+            c.log("Esto esta impresion con el alias de console")
+            
+        })(window, document, console);
+
+    </script>
+</body>
+</html>

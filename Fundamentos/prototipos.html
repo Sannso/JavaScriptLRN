@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Prototipos</h1>
+
+    <script>
+
+        // Las clases en realidad son una abreviacion de prototipos en JS
+
+        // La funcion constructora
+        function Animal(nombre, genero){
+            this.nombre = nombre
+            this.genero = genero
+
+            this.ruido = function(){
+                console.log("Estoy vivio!")
+            }
+        }
+
+        const junior = new Animal("Junior", "perro"),
+            mitan = new Animal("Batman", "gato")
+
+
+        console.log(junior)
+        console.log(mitan)
+
+        // El problema con asignar los metodos dentro de los prototipos
+        //      es que esta  se copia en todas las instancias y usa mas memoria,
+        //      para evitar eso, se le agregan los metodos por fuera al prototipo
+
+
+        function Humano(nombre, edad){
+            this.nombre = nombre
+            this.edad = edad
+        }
+
+        Humano.prototype.saludar = function(){
+            console.log(`Hola mi nombre es ${this.nombre}`)
+        }
+
+        const yo = new Humano("Santiago", "20")
+
+        yo.saludar()
+
+
+        // ---------- Herencia prototipica -----------
+
+        function Estudiante(nombre, edad, carrera){
+            this.super = Humano
+            this.super(nombre, edad)
+
+            this.carrera = carrera
+        }
+
+        Estudiante.prototype = new Humano()
+        Estudiante.prototype.constructor = Estudiante
+
+        const sujeto = new Estudiante("Sebastian", "17", "enfermeria")  
+        console.log(sujeto)
+        sujeto.saludar()
+
+
+    </script>
+</body>
+</html>

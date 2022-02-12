@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Objeto Console</h1>
+
+    <script>
+
+        // Hay diferentes tipos de console
+        console.warn("Esto es un aviso")
+
+        console.clear()
+
+        // Esta es la forma de mostrar todos los metodos y atributos de un objeto
+        console.dir(document)
+        console.clear()
+
+        let numeros = [2, 3, 1, 4]
+        console.table(numeros)
+
+        // Calcular un rango de tiempo, para medir rendimiento de un proceso o el programa
+
+        console.time("cuanto tarda mi codigo")
+        const arr = Array(1000000)
+        //arr.forEach( (e, index) =>  arr[index] = index + 1)
+        for (let index = 0; index < arr.length; index++) {
+            arr[index] = index + 1 
+        }
+
+        console.timeEnd("cuanto tarda mi codigo")
+        console.log(arr)
+
+        // Pruebas basicas con console
+        let x = 2; y = 3;
+        const pruebaXY = "Se espera que X siempre sea mayor que Y"
+
+        console.assert(x > y, {x, y, pruebaXY})
+
+    </script>
+</body>
+</html>

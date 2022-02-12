@@ -1,0 +1,8 @@
+{
+"cadena": "Jon",
+"numero": "35",
+"boolean0": "true",
+"arreglo": [1,2,3,4],
+"objeto": {"twitter": "@xd"},
+"nulo": null
+}

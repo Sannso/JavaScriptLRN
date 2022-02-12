@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Objeto Date</h1>
+
+    <script>
+
+        let fecha = new Date()
+        console.log(fecha)
+
+        console.log(`Día del mes: ${fecha.getDate()}`)
+        console.log(`Día de la semana: ${fecha.getDay()}`)
+        console.log(`Mes: ${fecha.getMonth()}`)
+        console.log(`Año: ${fecha.getFullYear()}`)
+        console.log(`Horas: ${fecha.getHours()} Min: ${fecha.getMinutes()}`, 
+        ` Seg: ${fecha.getSeconds()} Milisegundos: ${fecha.getMilliseconds()}`)
+
+        console.log(`Fecha sin horario: ${fecha.toDateString()}`)
+        console.log(`Solo la fecha y hora: ${fecha.toLocaleString()}`)
+        console.log(`Solo la fecha: ${fecha.toLocaleDateString()}`)
+        console.log(`Solo la hora: ${fecha.toLocaleTimeString()}`)
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Objetos literales</h1>
+
+    <script>
+        nombre = "Junior"
+        raza = "Perro"
+
+        // Objeto normal
+        const perro = { nombre: nombre,
+                        raza: raza,
+                        ladrar: function(){console.log("Guauu Guauu")}}
+        
+        console.log(`Nombre: ${perro.nombre}`)
+        perro.ladrar()
+
+        // Objeto simplificado
+        const dog = { nombre,
+                        raza,
+                        ladrar(){
+                            console.log("Guaauuu")
+                        }
+                    }
+        
+        console.log(`Nombre: ${dog.nombre}`)
+        dog.ladrar()
+
+
+    </script>
+</body>
+</html>

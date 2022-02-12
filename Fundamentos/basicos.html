@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fundamentos de JS</h1>
+
+    <script>
+        var hola = "Hola mundo" // Declara la variable en ambito global
+        let hello = "Hello world" // Declara la variable en ambito local
+
+        // basicamente NO USAR var
+
+        console.log(hola)
+        console.log(hello)
+
+        // -------------- Constantes ----------------------
+        const PI = 3.1415926
+        console.log(PI)
+
+            // Puedes cambiar el valor de una variable constante solo si
+            //      es tipo de dato compuesto (array, object...)
+        
+        const miob = {
+            nombre: "kekw",
+            id: "123ds"
+        }
+
+        console.log(miob)
+        /*
+        miob = {
+            nuevo: "nuevo"
+        }*/ // No se puede redefinir el objeto completo si es constante
+
+
+        // -------------- Cadenas de texto (String) ----------------------
+        let nombre = "Nombre"
+        let nomInstance = new String("Nombre instanciado")
+        console.log(nombre, " | ", nomInstance)
+            
+            // Tiene metodos parecidos en python
+
+
+        // -------------- Template Strings ---------------------
+        let name = "Santiago"
+        let lname = "Sosa"
+
+        let saludo = "Hola, bienvenido " + name + " " + lname
+        console.log("Saludo 1: " + saludo)
+
+        // Interpolacion de variables
+        let saludo2 = `Hola mi nombre es ${name} ${lname}`
+        console.log("Saludo 2: " + saludo2)
+
+
+
+        // -------------- Numbers ---------------------
+        let a = 2
+        let b = new Number(3)
+        let c = 5.76
+
+        console.log(`Numeros: ${a} y ${b}`)
+
+        // Metodo toFixed determina el numero de decimales y aproxima
+        console.log(`numero: ${c}
+        toFixed: ${c.toFixed(1)}`)
+
+        // parseint es lo mismo
+
+        // Las variable booleanas pues son exactamente igual 
+        // Que cosas tieneden a verdadero y  falso? buscar truthy falsy
+
+
+        //  ---------- NULL  Undefined  NaN ---------------
+        
+        let indefinida
+        console.log(indefinida)
+
+            // ambos valores significan que el valor esta ausente, solo que en undefined
+            //  no esta definido nada, pero en null si esta definida como esta
+
+        let nulo = null
+        console.log(nulo)
+
+        let noEsUnNumero = "No es numero" * 2
+        console.log(noEsUnNumero)
+
+
+    </script>
+
+</body>
+</html>

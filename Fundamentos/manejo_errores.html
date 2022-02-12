@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Manejo de Errores</h1>
+
+    <script>
+
+        // Try catch
+        
+        try { // Ejecuta codigo
+            console.log("Mensaje en el try")
+            noexiste
+        } catch (error) { // Captura el error que hay en el try
+            console.log("hubo un error")
+            console.log(`Error: ${error}`)
+        }
+        finally{ // Se ejecuta al final haya o no haya error
+            console.log("Codigo final")
+        }
+
+
+        // Try catch "personalizado"
+
+        try {
+            let numero = "i"
+
+            if(isNaN(numero)){
+                throw new Error("El valor introducido no es un número")
+            }
+
+            console.log(numero*2)
+
+        } catch (error) {
+            console.log(`Se produjo lo siguiente -> ${error}`)
+        }
+
+    </script>
+
+</body>
+</html>
